@@ -11,10 +11,10 @@
 
     /*paste all of this into css file before commit*/
 body {
-    background-color: rgb(33, 33, 44);
+    background-color: rgb(38, 38, 51);
 }
 div {
-    box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 0.568);
+    /* box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 0.568); */
 }
 
 .grid-container {
@@ -32,7 +32,7 @@ div {
     padding: 0rem;
     border: .4rem ridge rgb(0, 0, 0);
     border-radius:.1rem;
-    background-color: rgb(80, 121, 87);
+    background-color: rgb(134, 134, 134);
     overflow:hidden;
 }
 .grid-container > div {
@@ -42,7 +42,7 @@ div {
 .grid-container > div.header {
     grid-area: header;
     text-align: center;
-    background-color: rgb(65, 62, 71);
+    background-color: rgb(86, 83, 94);
     border-bottom: 2px solid rgb(0, 0, 0);
 }
 .grid-container > div.menu {
@@ -71,8 +71,9 @@ div {
 .block {
     max-width:30em;
     min-width:10em;
+    min-height:1em;
     margin: 1em auto 1em auto;
-    padding: 5rem;
+    padding: 2rem;
     border: 5px ridge rgb(0, 0, 0);
     border-radius:.1rem;
     background-color: rgb(80, 121, 87);
@@ -83,26 +84,95 @@ div {
     font-style: normal;
 }
 
-#customborder { /*find custom border..apply tag to wahteever u want to have the border*/
-  border: 15px solid transparent;
-  padding: 15px;
-  border-image-source: url("");
-  border-image-repeat: round;
-  border-image-slice: 30;
+#green-border {
+    border: 9px solid transparent;
+    border-image: url("https://i.imgur.com/uHihE3G.png") stretch 100;
+    border-image-outset: 0px; /*4px less than the width usually works*/
+    background-clip: default;
 }
+#grey-border {
+    border: 9px solid transparent;
+    border-image: url("https://i.imgur.com/ROOt5LE.png") stretch 100;
+    border-image-outset: 0px;
+    background-clip: default;
+}
+#darkgrey-border {
+    border: 9px solid transparent;
+    border-image: url("https://i.imgur.com/MbNbpj1.png") stretch 100;
+    border-image-outset: 0px;
+    background-clip: default;
+}
+#grey-concave-border {
+    border: 15px solid transparent;
+    border-image: url("https://i.imgur.com/UhL64Wg.png") stretch 90;
+    border-image-outset: 9px;
+    background-clip: default;
+}
+
+.screen {
+    box-shadow: 0px 0px 15px 5px inset black;
+    position:relative;
+    text-align: left;
+    padding-left: 1em;
+
+}
+.screen::after { /*screen filter overlay*/
+    content: " ";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("https://i.imgur.com/AtAY5iY.gif");
+    background-repeat: repeat;
+    background-size: 40px;
+    opacity: 0.4;
+    z-index: 2;
+}
+
+/* Cursor */
+.cursor{
+    position: relative;
+    width: 1em;
+    max-width:fit-content;
+    margin: 0 auto;
+    border-right: 3px solid rgba(255,255,255,.75);
+    font-size: 20px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(0%);
+}
+/* Animation */
+.typewriter-animation {
+  animation: 
+    typewriter 5s steps(40) 1s 1 normal both, 
+    blinkingCursor 600ms steps(50) infinite normal;
+}
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blinkingCursor{
+  from { border-right-color: rgba(39, 39, 39, 1); }
+  to { border-right-color: rgba(39, 39, 39, 0.3); }
+}
+
 
 </style>
     <body>
-        <div class="block">
-            <p>Hello. This site is being renovated!</p>
+        <!-- <div id="screen-overlay"></div> -->
+        <div id="grey-border" class="block screen">
+            <p class="cursor typewriter-animation">Hello. This site is being renovated!</p>
         </div>
-        <div class="grid-container">
+        <div id="grey-border" class="grid-container">
             <div class="header"><h2>Section Header</h2></div>
-            <div class="content"><h3>Lorem Ipsum</h3><p>Lorem ipsum odor amet, consectetuer adipiscing elit. Ridiculus sit nisl laoreet facilisis aliquet. Potenti dignissim litora eget montes rhoncus sapien neque urna. Cursus libero sapien integer magnis ligula lobortis quam ut.</p></div>
+            <div id="darkgrey-border" class="content"><h3>Lorem Ipsum</h3><p>Lorem ipsum odor amet, consectetuer adipiscing elit. Ridiculus sit nisl laoreet facilisis aliquet. Potenti dignissim litora eget montes rhoncus sapien neque urna. Cursus libero sapien integer magnis ligula lobortis quam ut.</p></div>
             <div class="footer"><p>brainimpediment</p></div>    
         </div>
-
-        <p id="borderimg3" style="width:50px;">hiiii</p>
 
     </body>
 </html>
